@@ -1,0 +1,16 @@
+version: '3.12.1'
+services:
+  rabbitmq1:
+    image: rabbitmq:3.12.1-management
+    container_name: rabbitmq1
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - RABBITMQ_ERLANG_COOKIE=cola
+      - RABBITMQ_DEFAULT_USER=victor
+      - RABBITMQ_DEFAULT_PASS=1171007
+    volumes:
+      - ./rabbitmq1:/var/lib/rabbitmq
+    command: ["bash", "-c", "chmod 400 /var/lib/rabbitmq/.erlang.cookie; rabbitmq-server"]
+
