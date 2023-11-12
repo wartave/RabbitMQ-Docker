@@ -13,4 +13,17 @@ services:
     volumes:
       - ./img_rabbitMQ:/var/lib/rabbitmq
     command: ["bash", "-c", "chmod 400 /var/lib/rabbitmq/.erlang.cookie; rabbitmq-server"]
+  img_rabbitMQ2:
+    image: rabbitmq:3.12.1-management
+    container_name: img_rabbitMQ2
+    ports:
+      - 5674:5672
+      - 15673:15672
+    environment:
+      - RABBITMQ_ERLANG_COOKIE=cola
+      - RABBITMQ_DEFAULT_USER=victor
+      - RABBITMQ_DEFAULT_PASS=1171007
+    volumes:
+      - ./img_rabbitMQ2:/var/lib/rabbitmq
+    command: ["bash", "-c", "chmod 400 /var/lib/rabbitmq/.erlang.cookie; rabbitmq-server"]
 
